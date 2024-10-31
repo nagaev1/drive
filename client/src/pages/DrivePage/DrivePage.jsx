@@ -19,20 +19,22 @@ export default function DrivePage(props) {
 
     return (
         <Layout>
-            <FileSearch />
-            <div className="flex h-full">
-                <div className="flex-grow">
-                    <DrivePageContext.Provider value={{ handleFileClick }}>
-                        <FileStore />
+            <div className="flex flex-col h-full">
+                <FileSearch />
+                <div className="flex flex-grow">
+                    <div className="flex-grow">
+                        <DrivePageContext.Provider value={{ handleFileClick }}>
+                            <FileStore />
+                        </DrivePageContext.Provider>
+                    </div>
+                    <DrivePageContext.Provider value={{ handleClose, file: selectedFile }}>
+                        {selectedFile ?
+                            <div className="w-80">
+                                <FileInfo />
+                            </div>
+                            : null}
                     </DrivePageContext.Provider>
                 </div>
-                <DrivePageContext.Provider value={{ handleClose, file: selectedFile }}>
-                    {selectedFile ?
-                        <div className="w-80">
-                            <FileInfo />
-                        </div>
-                        : null}
-                </DrivePageContext.Provider>
             </div>
         </Layout>
     )
