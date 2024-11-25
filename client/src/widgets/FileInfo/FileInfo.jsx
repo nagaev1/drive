@@ -16,10 +16,10 @@ export default function FileInfo(props) {
     }
 
     return (
-        <div className=" bg-th-bg-secondary shadow-lg h-full">
+        <div className=" bg-th-bg-secondary shadow-lg h-full text-th-text-primary">
             <div className="flex justify-between items-center">
                 {nameEditing ?
-                    <div className="p-3"><TextField className="w-full bg-th-bg-primary text-xl" defaultValue={file.name} /></div>
+                    <div className="p-3"><TextField className="w-full text-xl" defaultValue={file.name} /></div>
                     :
                     <div className="flex gap-2 items-center p-4">
                         <FileIcon className="size-6" icon={file.type} />

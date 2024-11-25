@@ -2,34 +2,25 @@ import Button from "@src/shared/ui/Button"
 import { MdChatBubble } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import Avatar from "@src/shared/ui/Avatar";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Sidebar(props) {
+
+    const btnClass = "aspect-square w-full rounded-full"
+
     return (
-        <div className="bg-th-bg-secondary w-16 lg:block hidden shadow-lg">
-            <div className="flex flex-col items-center justify-between p-2 h-full">
-                <div className="w-full flex flex-col gap-2">
-                    <SideBarButton>
-                        <MdChatBubble className="size-full" />
-                    </SideBarButton>
-                    <SideBarButton>
-                        <MdChatBubble className="size-full" />
-                    </SideBarButton>
-                </div>
-                <div className="w-full flex flex-col gap-2">
-                    <SideBarButton>
-                        <IoSettingsSharp className="size-full" />
-                    </SideBarButton>
-                    <Avatar className="" />
-                </div>
+        <div className="bg-th-bg-secondary w-16 shadow-lg fixed left-0 top-0 bottom-0">
+            <div className="w-full flex flex-col gap-2 p-2">
+                <Button className={btnClass} onClick={props.onSettingsClick}>
+                    <IoSettingsSharp className="size-full" />
+                </Button>
+                <Button className={btnClass} onClick={props.onUserClick}>
+                    <FaUserCircle className="size-full" />
+                </Button>
             </div>
         </div>
     )
 }
-
-function SideBarButton ({children}) {
-    return <Button className=" aspect-square w-full rounded-full">{children}</Button>
-}
-
 
 
 // export default function Sidebar(props) {

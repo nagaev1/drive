@@ -1,0 +1,101 @@
+
+###
+@hostname = http://127.0.0.1:8000/api
+###----------------------------------------USER-------------------------------------------------------###
+POST {{hostname}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "sample@gmail.com",
+    "password": "sample@gmail.com",
+    "password_confirmation": "sample@gmail.com"
+}
+
+###
+
+POST {{hostname}}/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "sample@gmail.com",
+    "password": "sample@gmail.com"
+}
+
+###
+
+POST {{hostname}}/logout HTTP/1.1
+accept: application/json 
+# сука без этого^ заголовка ошибка будет  local.ERROR: Route [login] not defined
+authorization: Bearer 29|ka2wIeU7toqeAZhBcXopyuDb8vH62Ia7yUHPUWxy79eb835f 
+
+###
+
+PATCH {{hostname}}/user/ HTTP/1.1
+content-type: application/json
+accept: application/json
+authorization: Bearer 33|B9khvUQ99TddX0gS5ZwaoyoR1mvb3L4LbODP1zyNef86d093 
+
+{
+    "name": "sample@gmail.com",
+    "email": "sample@gmail.com",
+    "password": "sample@gmail.com",
+    "password_confirmation": "sample@gmail.com"
+}
+
+
+###--------------------------------FILES---------------------------------------------------###
+
+GET {{hostname}}/files HTTP/1.1
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f
+
+###
+
+POST {{hostname}}/files/upload
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="files[]"; filename="my_image.jpg"
+Content-Type: image/jpeg
+
+< ./kon.jpg
+
+--boundary
+Content-Disposition: form-data; name="files[]"; filename="logo.jpg"
+Content-Type: image/jpeg
+
+< ./logo.jpg
+
+--boundary
+
+###
+
+DELETE {{hostname}}/files/1 HTTP/1.
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f
+
+###
+
+PUT {{hostname}}/files/2/rename/ HTTP/1.1
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f
+content-type: application/json
+
+{
+    "newName": "newImageName.jpg"
+}
+
+###---------------------------------FOLDERS------------------------------
+
+POST {{hostname}}/folders HTTP/1.1
+content-type: application/json
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f
+
+{
+    "name": "sda444",
+    "parent_id": "5"
+}
+
+###
+
+GET {{hostname}}/folders/6/ HTTP/1.
+authorization: Bearer 37|E1kBMIEdczp2QLNXOY2gM4V8VJCJgIM9ef942iNY69a91e8f

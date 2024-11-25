@@ -1,5 +1,5 @@
 import ChatsList from "@src/widgets/ChatsList/ChatsList"
-import Layout from "../layout"
+import Layout from "../Layout"
 import ChatView from "@src/widgets/ChatView/ChatView"
 import Sidebar from "@src/widgets/Sidebar/Sidebar"
 import ChatInfo from "@src/widgets/ChatInfo/ChatInfo"
